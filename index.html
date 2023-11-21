@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kiểm tra số nguyên tố</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+            padding: 50px;
+            text-align: center;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kiểm tra số nguyên tố</h1>
+    <input id="number" type="number" min="1" placeholder="Nhập số cần kiểm tra" required>
+    <button onclick="checkPrime()">Kiểm tra</button>
+    <div id="result"></div>
+
+    <script>
+        function checkPrime() {
+            var num = document.getElementById('number').value;
+            var resultDiv = document.getElementById('result');
+            if (isPrime(num)) {
+                resultDiv.textContent = num + ' là số nguyên tố.';
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = num + ' không phải là số nguyên tố.';
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 == 0 || num % 3 == 0) return false;
+            for (var i = 5; i * i <= num; i += 6) {
+                if (num % i == 0 || num % (i + 2) == 0) return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
